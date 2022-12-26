@@ -4,7 +4,10 @@ Na koniec działania program powinien wyświetlić w podsumowaniu:
 
 - Liczbę paczek wysłanych
 - Liczbę kilogramów wysłanych
-- Suma "pustych" - kilogramów (brak optymalnego pakowania). Liczba paczek * 20 - liczba kilogramów wysłanych
+- Suma "pustych" - kilogramów (brak optymalnego pakowania).  
+  
+  __Wzór: Liczba paczek * 20 - liczba kilogramów wysłanych__
+
 - Która paczka miała najwięcej "pustych" kilogramów, jaki to był wynik
 
 ## Restrykcje:
@@ -48,4 +51,4 @@ Ilość elementów: 8
 ### Wysłano 1 paczkę (7)
 ### Wysłano 7 kg
 ### Suma pustych kilogramów: 13kg
-### ### Najwięcej pustych kilogramów ma paczka 13
+### Najwięcej pustych kilogramów ma paczka 13
