@@ -1,25 +1,36 @@
 import sys
 
-element_count = int(input("Ile elementów: "))
-all_packages_waight = []
-packages = []
-packages_count = []
+all_weight_per_package = []
+all_packages = []
+tmp_packages = []
+packages_count = 0
 
-for element in range(element_count):
-    print(f"Wagi elementów [{element+1}]:", end=" ")
-    packages_waight = int(input())
+def all_elements_weight(weights):
+    all_elements_weight = []
+    tmp = weights.split(",")
+    for t in tmp:
+        all_elements_weight.append(int(t))
+    return all_elements_weight
 
-if packages_waight >= 1 or packages_waight <= 10:
-    all_packages_waight.append([packages_waight])
+def summary():
+    pass
 
-packages_count.append(len(all_packages_waight))
+element_count = input("Ile elementów: ")
+packages_weight = input("Wagi elementów: ")
+all_weight_per_package = all_elements_weight(packages_weight)
 
-print(f"Ilość elementów: {packages_count[0]}")
-for waight in packages_waight:
-    print(waight)
-    print(f"Wagi elementów: (waga1, waga2)")
-print(f"PODSUMOWANIE:")
+for weight in all_weight_per_package:
+    if len(tmp_packages) == 0:
+        tmp_packages.append(weight)
+        all_packages = [tmp_packages]
+    elif sum(tmp_packages) + weight <= 20:
+        all_packages[packages_count].append(weight)
+    elif sum(tmp_packages) + weight >= 20:
+        packages_count += 1
+        all_packages.append([weight])
+
+print(f"\nPODSUMOWANIE:")
 print(f"Wysłano <ilosc_paczek> (waga1+waga2)")
-print(f"Wysłano: XXkg")
+print(f"Wysłano: {sum(all_weight_per_package)}kg")
 print(f"Suma pustych kilogramow: YYkg")
 print(f"Najwięcej pustych kilogramów ma paczka <numer_paczki> (waga)")
