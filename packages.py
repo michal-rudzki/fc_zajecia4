@@ -26,19 +26,23 @@ def check_list_of_elements(list_of_elements, number_of_elements):
 def check_empty_package_weight(list_all_packages):
     pass
 
-def sum_of_empty_weight(list_all_packages):
+def sum_of_empty_weight(list_all_packages, sum_of_empty = True):
     index = 0
     tmp_empty_sum = []
     sum_of_empty_weight = []
+    list_of_empty_weight = []
     while len(list_all_packages):
-        for package in list_all_packages[index]:
-            tmp_empty_sum = PACKAGE_LIMIT - sum(package)
-            sum_of_empty_weight.append(tmp_empty_sum)
+        tmp_empty_sum = PACKAGE_LIMIT - sum(list_all_packages[index])
+        sum_of_empty_weight.append(tmp_empty_sum)
         if index != len(list_all_packages) - 1:
             index += 1
         else:
+            list_of_empty_weight = sum_of_empty_weight
             break
-    return sum(sum_of_empty_weight)
+    if sum_of_empty == True:
+        return sum(sum_of_empty_weight)
+    else:
+        return list_of_empty_weight
 
 def summary():
     pass
