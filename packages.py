@@ -23,8 +23,14 @@ def check_list_of_elements(list_of_elements, number_of_elements):
     else:
         return False
 
-def check_empty_package_weight(list_all_packages):
-    pass
+def check_empty_package_weight(list_empty_weight_all_packages):
+    empty_weight = 0
+    index = 0
+    for weight in list_empty_weight_all_packages:
+        if weight > empty_weight:
+            empty_weight = weight
+            index += 1
+    return f"{index+1}({empty_weight}kg)"
 
 def sum_of_empty_weight(list_all_packages, sum_of_empty = True):
     index = 0
@@ -79,6 +85,6 @@ if check_list_of_elements(all_weight_per_package, element_count) == True:
     print(f"Wysłano {len(all_packages)} paczki ({weight_per_package})")
     print(f"Wysłano: {sum(all_weight_per_package)}kg")
     print(f"Suma pustych kilogramow: {sum_of_empty_weight(all_packages)}kg")
-    print(f"Najwięcej pustych kilogramów ma paczka <numer_paczki> (waga)")
+    print(f"Najwięcej pustych kilogramów ma paczka {check_empty_package_weight(sum_of_empty_weight(all_packages, False))}")
 else:
     print("Sprawdź listę elementów.")
