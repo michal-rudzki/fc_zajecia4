@@ -5,12 +5,15 @@ all_packages = []
 tmp_packages = []
 weight_per_package = ""
 packages_count = 0
+PACKAGE_LIMIT = 20
+MIN = 1
+MAX = 10
 
 def all_elements_weight(weights):
     all_elements_weight = []
     tmp = weights.split(",")
     for t in tmp:
-        if int(t) >= 1 or int(t) <= 10:
+        if int(t) >= MIN or int(t) <= MAX:
             all_elements_weight.append(int(t))
     return all_elements_weight
 
@@ -20,11 +23,22 @@ def check_list_of_elements(list_of_elements, number_of_elements):
     else:
         return False
 
-def empty_package_weight(list_all_packages):
+def check_empty_package_weight(list_all_packages):
     pass
 
 def sum_of_empty_weight(list_all_packages):
-    pass
+    index = 0
+    tmp_empty_sum = []
+    sum_of_empty_weight = []
+    while len(list_all_packages):
+        for package in list_all_packages[index]:
+            tmp_empty_sum = PACKAGE_LIMIT - sum(package)
+            sum_of_empty_weight.append(tmp_empty_sum)
+        if index != len(list_all_packages) - 1:
+            index += 1
+        else:
+            break
+    return sum(sum_of_empty_weight)
 
 def summary():
     pass
@@ -37,9 +51,9 @@ if check_list_of_elements(all_weight_per_package, element_count) == True:
     for weight in all_weight_per_package:
         if len(all_packages) == 0:
             all_packages = [[weight]]
-        elif sum(all_packages[packages_count]) + weight <= 20:
+        elif sum(all_packages[packages_count]) + weight <= PACKAGE_LIMIT:
             all_packages[packages_count].append(weight)
-        elif sum(all_packages[packages_count]) + weight >= 20:
+        elif sum(all_packages[packages_count]) + weight >= PACKAGE_LIMIT:
             packages_count += 1
             all_packages.append([weight])
     
@@ -60,7 +74,7 @@ if check_list_of_elements(all_weight_per_package, element_count) == True:
 
     print(f"Wysłano {len(all_packages)} paczki ({weight_per_package})")
     print(f"Wysłano: {sum(all_weight_per_package)}kg")
-    print(f"Suma pustych kilogramow: {(len(all_packages) * 20) - sum(all_weight_per_package)}kg")
+    print(f"Suma pustych kilogramow: {sum_of_empty_weight(all_packages)}kg")
     print(f"Najwięcej pustych kilogramów ma paczka <numer_paczki> (waga)")
 else:
     print("Sprawdź listę elementów.")
