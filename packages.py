@@ -30,7 +30,7 @@ def check_empty_package_weight(list_empty_weight_all_packages):
         if weight > empty_weight:
             empty_weight = weight
             index += 1
-    return f"{index+1}({empty_weight}kg)"
+    return f"{index}({empty_weight}kg)"
 
 def sum_of_empty_weight(list_all_packages, sum_of_empty = True):
     index = 0
