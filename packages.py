@@ -23,7 +23,7 @@ def main():
             elif sum(all_packages[packages_count]) + weight >= PACKAGE_LIMIT:
                 packages_count += 1
                 all_packages.append([weight])
-        summary(weight_per_package, all_packages)
+        summary(weight_per_package, all_packages, all_weight_per_package)
     else:
         print("Za mało elementów, sprawdź listę elementów.")
 

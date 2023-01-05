@@ -50,7 +50,7 @@ def sum_of_empty_weight(list_all_packages, sum_of_empty = True):
     else:
         return list_of_empty_weight
 
-def summary(weight_per_package, all_packages):
+def summary(weight_per_package, all_packages, all_weight_per_package):
     print(f"\nPODSUMOWANIE:")
     
     for package in range(len(all_packages)):
