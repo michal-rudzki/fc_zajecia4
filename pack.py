@@ -13,6 +13,7 @@ def all_elements_weight(weights):
     for t in tmp:
         if int(t) >= MIN or int(t) <= MAX:
             all_elements_weight.append(int(t))
+    #all_elements_weight.sort(reverse=True)
     return all_elements_weight
 
 def check_list_of_elements(list_of_elements, number_of_elements):
@@ -28,8 +29,8 @@ def check_empty_package_weight(list_empty_weight_all_packages):
         if weight > empty_weight:
             empty_weight = weight
             index += 1
-    if len(list_empty_weight_all_packages) != 1:
-        index += 1
+    #if len(list_empty_weight_all_packages) != 1:
+    #    index += 1
     return f"{index} ({empty_weight}kg)"
 
 def sum_of_empty_weight(list_all_packages, sum_of_empty = True):
